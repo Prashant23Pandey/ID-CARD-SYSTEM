@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "Templates - Multischool ID Card System",
+    "_postman_id": "cc4d35cd-b5c8-4f53-a420-8f6dcf0f4e9f",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Templates",
+      "item": [
+        { "name": "Create Template", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates", "body": { "mode": "raw", "raw": "{\n  \"templateName\": \"Student ID 2026\",\n  \"templateCode\": \"STUDENT_2026\",\n  \"templateType\": \"STUDENT_ID_CARD\",\n  \"canvasWidth\": 860,\n  \"canvasHeight\": 540,\n  \"orientation\": \"LANDSCAPE\",\n  \"templateJson\": { \"front\": {\"objects\": []}, \"back\": {\"objects\": []} }\n}" } } },
+        { "name": "Update Template", "request": { "method": "PUT", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/{{templateId}}", "body": { "mode": "raw", "raw": "{\n  \"templateName\": \"Student ID 2026 - v2\"\n}" } } },
+        { "name": "Delete Template", "request": { "method": "DELETE", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }], "url": "{{baseUrl}}/templates/{{templateId}}" } },
+        { "name": "Publish Template", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/publish", "body": { "mode": "raw", "raw": "{\n  \"id\": \"{{templateId}}\",\n  \"status\": \"PUBLISHED\"\n}" } } },
+        { "name": "Archive Template", "request": { "method": "PATCH", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/archive", "body": { "mode": "raw", "raw": "{\n  \"id\": \"{{templateId}}\",\n  \"status\": \"ARCHIVED\"\n}" } } },
+        { "name": "Duplicate Template", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/duplicate", "body": { "mode": "raw", "raw": "{\n  \"id\": \"{{templateId}}\",\n  \"templateName\": \"Student ID Copy\"\n}" } } },
+        { "name": "Version History", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }], "url": "{{baseUrl}}/templates/version-history?templateId={{templateId}}&page=1&limit=20" } },
+        { "name": "Compare Versions", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }], "url": "{{baseUrl}}/templates/compare-versions?templateId={{templateId}}&fromVersion=1&toVersion=2" } },
+        { "name": "Restore Version", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/restore-version", "body": { "mode": "raw", "raw": "{\n  \"templateId\": \"{{templateId}}\",\n  \"version\": 1\n}" } } },
+        { "name": "Export Template", "request": { "method": "GET", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }], "url": "{{baseUrl}}/templates/export?id={{templateId}}" } },
+        { "name": "Import Template", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/import", "body": { "mode": "raw", "raw": "{\n  \"templateName\": \"Imported Template\",\n  \"templateCode\": \"IMPORTED_01\",\n  \"templateType\": \"CUSTOM_TEMPLATE\",\n  \"canvasWidth\": 860,\n  \"canvasHeight\": 540,\n  \"orientation\": \"LANDSCAPE\",\n  \"templateJson\": { \"front\": {\"objects\": []}, \"back\": {\"objects\": []} }\n}" } } },
+        { "name": "Preview Template", "request": { "method": "POST", "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }, { "key": "Content-Type", "value": "application/json" }], "url": "{{baseUrl}}/templates/{{templateId}}/preview", "body": { "mode": "raw", "raw": "{\n  \"data\": {\n    \"studentName\": \"Aarav Sharma\",\n    \"admissionNumber\": \"ADM2026-001\"\n  }\n}" } } }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api/v1" },
+    { "key": "accessToken", "value": "" },
+    { "key": "templateId", "value": "" }
+  ]
+}

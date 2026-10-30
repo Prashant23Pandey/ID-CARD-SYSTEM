@@ -1,0 +1,101 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Template APIs",
+    "version": "1.0.0",
+    "description": "Production APIs for ID card template designer and versioning."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/api/v1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/templates": {
+      "post": {
+        "summary": "Create Template",
+        "requestBody": {
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Templates",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/templates/{id}": {
+      "get": {
+        "summary": "Get Template"
+      },
+      "put": {
+        "summary": "Update Template"
+      },
+      "delete": {
+        "summary": "Delete Template"
+      }
+    },
+    "/templates/publish": {
+      "patch": {
+        "summary": "Publish Template"
+      }
+    },
+    "/templates/archive": {
+      "patch": {
+        "summary": "Archive Template"
+      }
+    },
+    "/templates/duplicate": {
+      "post": {
+        "summary": "Duplicate Template"
+      }
+    },
+    "/templates/version-history": {
+      "get": {
+        "summary": "Version History"
+      }
+    },
+    "/templates/compare-versions": {
+      "get": {
+        "summary": "Compare Versions"
+      }
+    },
+    "/templates/restore-version": {
+      "post": {
+        "summary": "Restore Version"
+      }
+    },
+    "/templates/import": {
+      "post": {
+        "summary": "Import Template"
+      }
+    },
+    "/templates/export": {
+      "get": {
+        "summary": "Export Template"
+      }
+    }
+  }
+}
